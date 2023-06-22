@@ -1,0 +1,18 @@
+<!-- userlist.html-->
+{% extends 'base.html'%}
+{% block content %}
+<div class="p-5 text-center bg-light mb-5">
+    <h1 class="mb-3">Usuarios</h1>
+    <h4 class="mb-4">Lista de usuarios</h4>
+</div>
+{% endblock %}
+{% block content2 %}
+    <h1> User List</h1>
+    <ul>
+        {% for objeto in object_list %}
+        <li> {{objeto}} </li>
+        {% empty %}
+        <li> No hay objetos</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!-- userlist.html-->
+{% extends 'base.html'%}
+{% block content %}
+<div class="p-5 text-center bg-light mb-5">
+    <h1 class="mb-3">Albumes</h1>
+    <h4 class="mb-4">Lista de albumes</h4>
+</div>
+{% endblock %}
+{% block content2 %}
+    <div class="row">
+        {% for objeto in object_list %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card mb-4">
+                <img src="{{objeto.image_url}}" class="card-img-top" alt="Imagen de la tarjeta">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted"> 
+                            {{objeto.item_subcategory}}
+                        </h6>
+                        <h5 class="card-title fw-bold">
+                            {{objeto.name}}
+                        </h5>
+                        <p class="card-text">
+                            ${{objeto.item_price}}
+                        </p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+            </div>
+        </div>
+        {% empty %}
+        <li> No hay objetos</li>
+        {% endfor %}
+    </div>
+      
+    
+{% endblock %}

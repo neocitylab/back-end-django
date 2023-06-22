@@ -1,0 +1,9 @@
+.btn-primary{
+    background-color: rgba(240, 73, 176, 0.922);
+    text-size-adjust: 80%;
+
+} 
+
+.card-img-top {
+    object-fit: cover;
+}
