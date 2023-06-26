@@ -4,8 +4,22 @@ $(document).ready(function() {
     
 })
 function createUser(jsonData){
-
-    let url = "http://localhost:3000/auth/registration";
+    let url_user = "http://localhost:3000/auth/registration";
+    $.ajax({
+        url: url_user,
+        type: 'POST',
+        data: jsonData,
+        contentType: 'application/json',
+        success: function(response) {
+          // Handle the successful response
+          console.log('User created successfully!');
+        },
+        error: function(xhr, status, error) {
+          // Handle any errors that occur during the request
+          console.log('Error:', status, error);
+        }
+      });
+    
     
 
 }
@@ -28,6 +42,3 @@ function obtainForm(){
 $("#registerButton").on("click",obtainForm);
 
 createUser(obtainForm)
-function checkUser(){
-
-}

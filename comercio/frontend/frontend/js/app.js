@@ -1,15 +1,16 @@
 $(document).ready(function() {
     showData();
+    $(".btn .btn-link .purchasebutton").click(function(){
+            alert("El articulo fue agregado a su lista de favoritos");
+    });
 
-    
+    $(".btn .btn-primary").on("click", function(){
+        alert("Plataforma de compra");
+    });
 })
 
-$(".btn .btn-link").click(function(){
-        console.log("NO SIRVE")
-        alert("El articulo fue agregado a su lista de favoritos");
-    })
 
-$(".btn-primary").on("click", function(){alert("Plataforma de compra");});
+
 function getData(){
     return new Promise((resolve, reject) => {
         $.getJSON(
@@ -21,7 +22,7 @@ function getData(){
                     reject("Error al obtener los datos");
                 }
             },
-            console.log('hi from jQuery! ')
+
         );
     });
 }
@@ -38,7 +39,6 @@ function getCategories(){
                     reject("Error al obtener los datos");
                 }
             },
-            console.log('hi from laverga! ')
         );
     });
 
@@ -46,7 +46,7 @@ function getCategories(){
 
 function showCategories(category){
     return `
-            <a class="dropdown-item" href="#">${category.category_name}</a>
+            <button class="dropdown-item" href="#">${category.category_name}</button>
         `
 
 }
@@ -69,8 +69,8 @@ function createCard(product){
                     <p class="card-text">
                        $${product.item_price}
                     </p>
-                    <a class="btn btn-primary" data-mdb-color="purple">Comprar</a>
-                    <a class="btn btn-link"><i class="fa fa-heart"></i> Agregar a favoritos</i></a>
+                    <a class="btn btn-primary purchasebutton" data-mdb-color="purple">Comprar</a>
+                    <a class="btn btn-link favbutton"><i class="fa fa-heart"></i> Agregar a favoritos</i></a>
                 </div>
              </div>
         </div>
@@ -83,6 +83,7 @@ function register(){
         window.Location.href="/frontend/login.html";
     });
 }
+
 async function showData(){
 
     try{
@@ -101,6 +102,7 @@ async function showData(){
 
         $("#cardContainer").html(cards);
         $("#categoriesDropdown").html(cats);
+
     } catch(error){
         console.error(error);
     }
